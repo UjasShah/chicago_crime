@@ -1,0 +1,18 @@
+[2023-12-20T15:13:27.596+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: crimes_dag.submit_pyspark_job manual__2023-12-20T11:55:08.736573+00:00 [queued]>
+[2023-12-20T15:13:27.609+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: crimes_dag.submit_pyspark_job manual__2023-12-20T11:55:08.736573+00:00 [queued]>
+[2023-12-20T15:13:27.609+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-12-20T15:13:27.633+0000] {taskinstance.py:1382} INFO - Executing <Task(DataprocSubmitJobOperator): submit_pyspark_job> on 2023-12-20 11:55:08.736573+00:00
+[2023-12-20T15:13:27.642+0000] {standard_task_runner.py:57} INFO - Started process 3775 to run task
+[2023-12-20T15:13:27.647+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'crimes_dag', 'submit_pyspark_job', 'manual__2023-12-20T11:55:08.736573+00:00', '--job-id', '33', '--raw', '--subdir', 'DAGS_FOLDER/crime_dag.py', '--cfg-path', '/tmp/tmp4g6n92g6']
+[2023-12-20T15:13:27.653+0000] {standard_task_runner.py:85} INFO - Job 33: Subtask submit_pyspark_job
+[2023-12-20T15:13:27.730+0000] {task_command.py:416} INFO - Running <TaskInstance: crimes_dag.submit_pyspark_job manual__2023-12-20T11:55:08.736573+00:00 [running]> on host d2fdd2505514
+[2023-12-20T15:13:27.845+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='crimes_dag' AIRFLOW_CTX_TASK_ID='submit_pyspark_job' AIRFLOW_CTX_EXECUTION_DATE='2023-12-20T11:55:08.736573+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-12-20T11:55:08.736573+00:00'
+[2023-12-20T15:13:27.846+0000] {dataproc.py:2123} INFO - Submitting job
+[2023-12-20T15:13:27.858+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2023-12-20T15:13:27.863+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2023-12-20T15:13:29.971+0000] {dataproc.py:2135} INFO - Job 85b6e217-2a8e-42a0-a179-7a254ae968f9 submitted successfully.
+[2023-12-20T15:13:29.990+0000] {dataproc.py:2169} INFO - Waiting for job 85b6e217-2a8e-42a0-a179-7a254ae968f9 to complete
+[2023-12-20T15:14:05.405+0000] {dataproc.py:2173} INFO - Job 85b6e217-2a8e-42a0-a179-7a254ae968f9 completed successfully.
+[2023-12-20T15:14:05.480+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=crimes_dag, task_id=submit_pyspark_job, execution_date=20231220T115508, start_date=20231220T151327, end_date=20231220T151405
+[2023-12-20T15:14:05.539+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-12-20T15:14:05.573+0000] {taskinstance.py:2778} INFO - 1 downstream tasks scheduled from follow-on schedule check

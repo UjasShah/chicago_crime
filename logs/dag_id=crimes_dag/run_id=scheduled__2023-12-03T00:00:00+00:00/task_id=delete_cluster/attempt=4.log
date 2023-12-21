@@ -1,0 +1,16 @@
+[2023-12-20T18:06:42.215+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: crimes_dag.delete_cluster scheduled__2023-12-03T00:00:00+00:00 [queued]>
+[2023-12-20T18:06:42.258+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: crimes_dag.delete_cluster scheduled__2023-12-03T00:00:00+00:00 [queued]>
+[2023-12-20T18:06:42.259+0000] {taskinstance.py:1361} INFO - Starting attempt 4 of 4
+[2023-12-20T18:06:42.297+0000] {taskinstance.py:1382} INFO - Executing <Task(DataprocDeleteClusterOperator): delete_cluster> on 2023-12-03 00:00:00+00:00
+[2023-12-20T18:06:42.341+0000] {standard_task_runner.py:57} INFO - Started process 6371 to run task
+[2023-12-20T18:06:42.347+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'crimes_dag', 'delete_cluster', 'scheduled__2023-12-03T00:00:00+00:00', '--job-id', '50', '--raw', '--subdir', 'DAGS_FOLDER/crime_dag.py', '--cfg-path', '/tmp/tmpatqpd99n']
+[2023-12-20T18:06:42.356+0000] {standard_task_runner.py:85} INFO - Job 50: Subtask delete_cluster
+[2023-12-20T18:06:42.509+0000] {task_command.py:416} INFO - Running <TaskInstance: crimes_dag.delete_cluster scheduled__2023-12-03T00:00:00+00:00 [running]> on host d2fdd2505514
+[2023-12-20T18:06:43.031+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='crimes_dag' AIRFLOW_CTX_TASK_ID='delete_cluster' AIRFLOW_CTX_EXECUTION_DATE='2023-12-03T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='4' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-12-03T00:00:00+00:00'
+[2023-12-20T18:06:43.059+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2023-12-20T18:06:43.067+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2023-12-20T18:06:43.068+0000] {dataproc.py:962} INFO - Deleting cluster: crimes-cluster
+[2023-12-20T18:07:41.889+0000] {dataproc.py:932} INFO - Cluster deleted.
+[2023-12-20T18:07:42.036+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=crimes_dag, task_id=delete_cluster, execution_date=20231203T000000, start_date=20231220T180642, end_date=20231220T180742
+[2023-12-20T18:07:42.147+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-12-20T18:07:42.204+0000] {taskinstance.py:2778} INFO - 1 downstream tasks scheduled from follow-on schedule check

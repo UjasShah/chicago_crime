@@ -1,0 +1,117 @@
+[2023-12-20T14:51:07.090+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: crimes_dag.submit_pyspark_job scheduled__2023-12-03T00:00:00+00:00 [queued]>
+[2023-12-20T14:51:07.102+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: crimes_dag.submit_pyspark_job scheduled__2023-12-03T00:00:00+00:00 [queued]>
+[2023-12-20T14:51:07.103+0000] {taskinstance.py:1361} INFO - Starting attempt 4 of 4
+[2023-12-20T14:51:07.118+0000] {taskinstance.py:1382} INFO - Executing <Task(DataprocSubmitJobOperator): submit_pyspark_job> on 2023-12-03 00:00:00+00:00
+[2023-12-20T14:51:07.125+0000] {standard_task_runner.py:57} INFO - Started process 3064 to run task
+[2023-12-20T14:51:07.129+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'crimes_dag', 'submit_pyspark_job', 'scheduled__2023-12-03T00:00:00+00:00', '--job-id', '22', '--raw', '--subdir', 'DAGS_FOLDER/crime_dag.py', '--cfg-path', '/tmp/tmpoolcrk0c']
+[2023-12-20T14:51:07.137+0000] {standard_task_runner.py:85} INFO - Job 22: Subtask submit_pyspark_job
+[2023-12-20T14:51:07.219+0000] {task_command.py:416} INFO - Running <TaskInstance: crimes_dag.submit_pyspark_job scheduled__2023-12-03T00:00:00+00:00 [running]> on host d2fdd2505514
+[2023-12-20T14:51:07.313+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='crimes_dag' AIRFLOW_CTX_TASK_ID='submit_pyspark_job' AIRFLOW_CTX_EXECUTION_DATE='2023-12-03T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='4' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-12-03T00:00:00+00:00'
+[2023-12-20T14:51:07.316+0000] {dataproc.py:2123} INFO - Submitting job
+[2023-12-20T14:51:07.326+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2023-12-20T14:51:07.331+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2023-12-20T14:51:09.323+0000] {dataproc.py:2135} INFO - Job 4daf09eb-4bd9-480d-b162-29473c7ec6b8 submitted successfully.
+[2023-12-20T14:51:09.381+0000] {dataproc.py:2169} INFO - Waiting for job 4daf09eb-4bd9-480d-b162-29473c7ec6b8 to complete
+[2023-12-20T14:51:45.798+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/operators/dataproc.py", line 2170, in execute
+    self.hook.wait_for_job(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/common/hooks/base_google.py", line 475, in inner_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/hooks/dataproc.py", line 723, in wait_for_job
+    raise AirflowException(f"Job failed:\n{job}")
+airflow.exceptions.AirflowException: Job failed:
+reference {
+  project_id: "oceanic-hangout-406022"
+  job_id: "4daf09eb-4bd9-480d-b162-29473c7ec6b8"
+}
+placement {
+  cluster_name: "crimes-cluster"
+  cluster_uuid: "4ed5c5aa-0537-4d1b-89f4-42f03bf9d092"
+}
+pyspark_job {
+  main_python_file_uri: "gs://chicago_crimes_project/transform.py"
+}
+status {
+  state: ERROR
+  details: "File not found: gs://chicago_crimes_project/transform.py"
+  state_start_time {
+    seconds: 1703083899
+    nanos: 950653000
+  }
+}
+status_history {
+  state: PENDING
+  state_start_time {
+    seconds: 1703083869
+    nanos: 275464000
+  }
+}
+status_history {
+  state: SETUP_DONE
+  state_start_time {
+    seconds: 1703083869
+    nanos: 322673000
+  }
+}
+status_history {
+  state: RUNNING
+  state_start_time {
+    seconds: 1703083869
+    nanos: 633320000
+  }
+}
+driver_output_resource_uri: "gs://dataproc-staging-us-central1-680742956147-4kfq6wcd/google-cloud-dataproc-metainfo/4ed5c5aa-0537-4d1b-89f4-42f03bf9d092/jobs/4daf09eb-4bd9-480d-b162-29473c7ec6b8/driveroutput"
+driver_control_files_uri: "gs://dataproc-staging-us-central1-680742956147-4kfq6wcd/google-cloud-dataproc-metainfo/4ed5c5aa-0537-4d1b-89f4-42f03bf9d092/jobs/4daf09eb-4bd9-480d-b162-29473c7ec6b8/"
+job_uuid: "4daf09eb-4bd9-480d-b162-29473c7ec6b8"
+done: true
+
+[2023-12-20T14:51:45.859+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=crimes_dag, task_id=submit_pyspark_job, execution_date=20231203T000000, start_date=20231220T145107, end_date=20231220T145145
+[2023-12-20T14:51:46.007+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 22 for task submit_pyspark_job (Job failed:
+reference {
+  project_id: "oceanic-hangout-406022"
+  job_id: "4daf09eb-4bd9-480d-b162-29473c7ec6b8"
+}
+placement {
+  cluster_name: "crimes-cluster"
+  cluster_uuid: "4ed5c5aa-0537-4d1b-89f4-42f03bf9d092"
+}
+pyspark_job {
+  main_python_file_uri: "gs://chicago_crimes_project/transform.py"
+}
+status {
+  state: ERROR
+  details: "File not found: gs://chicago_crimes_project/transform.py"
+  state_start_time {
+    seconds: 1703083899
+    nanos: 950653000
+  }
+}
+status_history {
+  state: PENDING
+  state_start_time {
+    seconds: 1703083869
+    nanos: 275464000
+  }
+}
+status_history {
+  state: SETUP_DONE
+  state_start_time {
+    seconds: 1703083869
+    nanos: 322673000
+  }
+}
+status_history {
+  state: RUNNING
+  state_start_time {
+    seconds: 1703083869
+    nanos: 633320000
+  }
+}
+driver_output_resource_uri: "gs://dataproc-staging-us-central1-680742956147-4kfq6wcd/google-cloud-dataproc-metainfo/4ed5c5aa-0537-4d1b-89f4-42f03bf9d092/jobs/4daf09eb-4bd9-480d-b162-29473c7ec6b8/driveroutput"
+driver_control_files_uri: "gs://dataproc-staging-us-central1-680742956147-4kfq6wcd/google-cloud-dataproc-metainfo/4ed5c5aa-0537-4d1b-89f4-42f03bf9d092/jobs/4daf09eb-4bd9-480d-b162-29473c7ec6b8/"
+job_uuid: "4daf09eb-4bd9-480d-b162-29473c7ec6b8"
+done: true
+; 3064)
+[2023-12-20T14:51:46.108+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-12-20T14:51:46.264+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
