@@ -6,7 +6,7 @@ from google.cloud import storage
 
 load_dotenv()
 
-storage_client = storage.Client('oceanic-hangout-406022')
+storage_client = storage.Client(os.getenv('PROJECT'))
 bucket = storage_client.bucket('chicago_crime_project')
 folder_name = 'extracted/'
 

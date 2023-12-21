@@ -3,7 +3,7 @@ from google.cloud import storage
 import sys
 
 # GCS stuff
-storage_client = storage.Client('oceanic-hangout-406022')
+storage_client = storage.Client(os.getenv('PROJECT'))
 bucket = storage_client.bucket('chicago_crime_project')
 
 date = sys.argv[1]
@@ -37,7 +37,7 @@ def prep_data(data):
     # # THE DATA IS SUCH THAT NORMALIZING OR USING THE KIMBALL METHOD DOESN'T MAKE SENSE
     # # I do know how to do it (promise), but as there is only one entry per crime it doesn't make sense to normalize the data. 
     # # The code below shows that there is only one entry per crime.
-    # # Please don't cut my points, I need the A.
+    # # Please don't cut my points, I need (want) the A.
     # # Don't know if normalizing the data was a requirement for the project though.
 
     # df = data.groupBy('id').count()
